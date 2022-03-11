@@ -9,10 +9,15 @@ class ServerAPI {
 //        서버통신담당 클래스 : 레트로핏 클래스 객체를 담을 변수
 //      아직 안만들었다.
         private var retrofit : Retrofit? = null
+        private val BASE_URL = "https://keepthetime.xyz"
 
         fun getRetrofit() : Retrofit {
+
+//            Retrofit 라이브러리는 클래스 차원에서 BASE_URL 을 설정할 수 있게 도와줌.
+
             if (retrofit == null) {
                 retrofit = Retrofit.Builder()
+                    .baseUrl(BASE_URL)
                     .build()
             }
 
