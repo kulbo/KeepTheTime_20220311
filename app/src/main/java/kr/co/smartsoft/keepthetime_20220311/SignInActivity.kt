@@ -34,6 +34,13 @@ class SignInActivity : BaseActivity() {
             override fun onResponse(call: Call<JSONObject>, response: Response<JSONObject>) {
                 Log.d("응답확인", response.message())
 
+//                Retrofit 라이브러리의 response는 성공/실패 여부에 따라 다른 본문을 봐야함.
+//                성공인지? code == 200 ?
+                if(response.isSuccessful) {
+//                    모둔 결과가 최종 성공인 경우
+                } else {
+
+                }
             }
 
             override fun onFailure(call: Call<JSONObject>, t: Throwable) {
