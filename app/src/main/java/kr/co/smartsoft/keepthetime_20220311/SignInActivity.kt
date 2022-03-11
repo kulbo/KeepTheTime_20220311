@@ -3,6 +3,8 @@ package kr.co.smartsoft.keepthetime_20220311
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import kr.co.smartsoft.keepthetime_20220311.api.APIList
 import kr.co.smartsoft.keepthetime_20220311.api.ServerAPI
 import kr.co.smartsoft.keepthetime_20220311.databinding.ActivitySignInBinding
@@ -18,7 +20,7 @@ class SignInActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         setupEvents()
         setValues()
 
@@ -39,6 +41,8 @@ class SignInActivity : BaseActivity() {
 //                성공인지? code == 200 ?
                 if(response.isSuccessful) {
 //                    모든 결과가 최종 성공인 경우
+                    val br = response.body()!!
+                    Toast.makeText(mContext, "${br.data.user.nick_name}님 환영합니다.", Toast.LENGTH_SHORT).show()
                 } else {
 
                 }
