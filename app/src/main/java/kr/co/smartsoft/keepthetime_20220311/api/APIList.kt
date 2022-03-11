@@ -16,4 +16,13 @@ interface APIList {
         @Field("email") email:String,
         @Field("password") pw:String
     )  : Call<BasicResponse>    // 서버가 주는 응답을 (성공시에) BasicResponse
+
+    @FormUrlEncoded
+    @POST("/user")
+    fun putRequestSignUp(
+        @Field("email") email: String,
+        @Field("password") pw: String,
+        @Field("nick_name") nick : String,
+    ) : Call<BasicResponse>
+
 }
