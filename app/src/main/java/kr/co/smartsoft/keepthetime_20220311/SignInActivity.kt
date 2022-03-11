@@ -32,7 +32,7 @@ class SignInActivity : BaseActivity() {
 
         apiList.postRequestLogin(inputEmail, inputPassword).enqueue(object : Callback<JSONObject>{
             override fun onResponse(call: Call<JSONObject>, response: Response<JSONObject>) {
-                Log.d("응답확인"., response.message())
+                Log.d("응답확인", response.message())
 
             }
 
