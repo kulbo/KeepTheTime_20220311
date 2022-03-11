@@ -6,6 +6,7 @@ import android.util.Log
 import kr.co.smartsoft.keepthetime_20220311.api.APIList
 import kr.co.smartsoft.keepthetime_20220311.api.ServerAPI
 import kr.co.smartsoft.keepthetime_20220311.databinding.ActivitySignInBinding
+import kr.co.smartsoft.keepthetime_20220311.datas.BasicResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,20 +31,20 @@ class SignInActivity : BaseActivity() {
         val inputEmail = binding.edtId.text.toString()
         val inputPassword = binding.edtPassword.text.toString()
 
-        apiList.postRequestLogin(inputEmail, inputPassword).enqueue(object : Callback<JSONObject>{
-            override fun onResponse(call: Call<JSONObject>, response: Response<JSONObject>) {
+        apiList.postRequestLogin(inputEmail, inputPassword).enqueue(object : Callback<BasicResponse>{
+            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
                 Log.d("응답확인", response.message())
 
 //                Retrofit 라이브러리의 response는 성공/실패 여부에 따라 다른 본문을 봐야함.
 //                성공인지? code == 200 ?
                 if(response.isSuccessful) {
-//                    모둔 결과가 최종 성공인 경우
+//                    모든 결과가 최종 성공인 경우
                 } else {
 
                 }
             }
 
-            override fun onFailure(call: Call<JSONObject>, t: Throwable) {
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
 
             }
 
